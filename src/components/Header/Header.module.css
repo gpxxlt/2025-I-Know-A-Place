@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    padding: 2rem 4rem;
+}
+
+.logo {
+    display: block;
+    width: 8rem;
+    height: 100%;
+}
+
+.link {
+    transition: opacity 0.3s;
+}
+
+.link:hover {
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+}

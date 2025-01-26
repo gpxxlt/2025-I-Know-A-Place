@@ -1,0 +1,16 @@
+.container {
+    position: static;
+}
+
+.map {
+    height: 60vh;
+    z-index: 0;
+}
+
+.popup {
+    word-wrap: break-word;
+}
+
+.cluster {
+    color: #EA4227;
+}

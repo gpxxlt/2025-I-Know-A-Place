@@ -1,0 +1,37 @@
+{
+    "name": "story-map",
+    "private": true,
+    "dependencies": {
+        "@material-ui/core": "^4.11.3",
+        "@material-ui/icons": "^4.11.2",
+        "@react-leaflet/core": ">=1.0.0 <1.1.0 || ^1.1.1",
+        "classnames": "^2.3.1",
+        "firebase": "^8.2.6",
+        "leaflet": "^1.7.1",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-leaflet": ">=3.1.0 <3.2.0 || ^3.2.1",
+        "react-leaflet-markercluster": "^3.0.0-rc1",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "^4.0.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "eject": "react-scripts eject",
+        "deploy:functions": "firebase deploy --only functions -P tedxcmu-narratives",
+        "deploy:dev": "npm run build && firebase deploy --only hosting:dev -P tedxcmu-narratives",
+        "deploy:prod": "npm run build && firebase deploy --only hosting:production -P tedxcmu-narratives"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+    ]
+}

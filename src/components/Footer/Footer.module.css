@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    padding: 2rem 4rem;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+.link {
+    transition: opacity 0.3s;
+}
+
+.link:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+}

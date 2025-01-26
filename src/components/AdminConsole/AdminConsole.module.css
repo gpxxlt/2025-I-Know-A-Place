@@ -1,0 +1,102 @@
+.title {
+    padding: 2rem 4rem;
+    font-size: 3rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    background-color: #fafafa;
+}
+
+.subtitle_top {
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.subtitle {
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.promptSpace {
+    margin: 1rem 1rem;
+    font-size: 1.25rem;
+}
+
+.container {
+    padding: 2rem 4rem;
+}
+
+.span {
+    font-family: Mazius, sans-serif;
+}
+
+.story {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 0.5rem;
+}
+
+.text:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.button {
+    padding: 0.8rem 1rem;
+    margin: 0.2rem 1rem 0.2rem 0rem;
+    color: #fff;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+.approve {
+    background-color: #27ae60;
+    margin-right: 1rem;
+}
+
+.delete {
+    background-color: #e74c3c;
+}
+
+.pending {
+    background-color: #3c3fe7;
+}
+
+.prompt {
+    background-color: #3c94e7;
+}
+
+.input {
+    display: block;
+    width: 50%;
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    background-color: #fafafa;
+    border-radius: 0.5rem;
+    border: 0.1rem solid #dfdfdf;
+    resize: none;
+}
+
+@media screen and (max-width: 768px) {
+    .title {
+        padding: 2rem;
+        font-size: 2rem;
+    }
+
+    .stories {
+        padding: 2rem;
+    }
+
+    .input {
+        width: 100%;
+    }
+}

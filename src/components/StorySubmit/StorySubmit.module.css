@@ -1,0 +1,44 @@
+.title {
+    margin-bottom: 1rem;
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    background-color: #fafafa;
+    border-radius: 0.5rem;
+    border: 0.1rem solid #dfdfdf;
+    resize: none;
+}
+
+.submit {
+    display: flex;
+    margin: auto;
+    margin-bottom: 0.6rem;
+    padding: 0.5rem 2.5rem;
+    border: none;
+    border-radius: 2.2rem;
+    font-size: 0.8rem;
+    background-color: #EA4227;
+    color: #fff;
+    cursor: pointer;
+}
+
+.disabled {
+    cursor: not-allowed;
+    margin: auto;
+    margin-bottom: 0.6rem;
+}
+
+.success {
+    font-size: 1rem;
+    margin: 1rem;
+    margin-top: 0.4rem;
+}

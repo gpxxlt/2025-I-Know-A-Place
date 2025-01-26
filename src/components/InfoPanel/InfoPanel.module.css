@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 20vh;
+    padding: 2rem 8rem;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+.title {
+    font-size: 3.2rem;
+}
+
+.span {
+    font-family: Mazius, sans-serif;
+}
+
+.body {
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1rem 2rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .body {
+        font-size: 1rem;
+    }
+}
