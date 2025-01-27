@@ -1,16 +1,13 @@
-import { Link } from 'react-router-dom';
-
 import styles from './Header.module.css';
 
-function Header() {
+function Header({setAbout}) {
     return (
         <nav className={styles.container}>
-            <Link to="/">
-                <img className={styles.logo} src="/tedx-logo.svg" alt="TEDxCMU Logo" />
-            </Link>
-            <Link className={styles.link} to="/about">
+
+            <img className={styles.logo} src="/tedx-logo.svg" alt="TEDxCMU Logo" onClick={()=>setAbout(false)}/>
+            <div className={styles.link} onClick={()=>setAbout(true)}>
                 ABOUT
-            </Link>
+            </div>
         </nav>
     )
 }

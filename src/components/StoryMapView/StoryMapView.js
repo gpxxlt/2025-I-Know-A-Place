@@ -52,18 +52,18 @@ function ClickComponent({ selectionMarker, setSelectionMarker, handleClickOpen }
                         id: "doc1",
                         data: ({
                             approved: true,
-                            title: "A Day in the Park",
-                            description: "An amazing story of friendship and adventure.",
-                            latLong: { lat: 40.442, lng: -79.942 },
+                            title: "What is a memory you have made here?",
+                            description: "I took my first CS class here :)",
+                            latLong: { lat: 40.444, lng: -79.944 },
                         }),
                     },
                     {
                         id: "doc2",
                         data: ({
                             approved: false,
-                            title: "An Unapproved Story",
-                            description: "This story is not yet approved.",
-                            latLong: { lat: 34.052235, lng: -118.243683 },
+                            title: "What is a memory you have made here?",
+                            description: "I took my first Design class here.",
+                            latLong: { lat: 40.442, lng: -79.942 },
                         }),
                     },
                     {

@@ -5,7 +5,6 @@ import StoryMapView from '../components/StoryMapView/StoryMapView';
 function HomePage() {
     return (
         <>
-            <Header />
             <InfoPanel />
             <StoryMapView />
         </>
