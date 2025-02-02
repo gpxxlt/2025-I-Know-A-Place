@@ -1,32 +1,35 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+import { useState } from "react";
 import cn from 'classnames';
 
 import styles from './StorySubmit.module.css';
+import {Button} from "@material-ui/core";
 
 function StorySubmit({ latLong }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [prompt, setPrompt] = useState('');
-    const [prompts, setPrompts] = useState([]);
+    // const [prompts, setPrompts] = useState([]);
     const [storyText, setStoryText] = useState('');
-    const [submitted, setSubmitted] = useState('');
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(null);
 
-
-    useEffect(() => {
-        (async function () {
-            const allPrompts = []
-            const response = await allPrompts.get();
-            const newPrompts = [];
-            response.docs.forEach((doc) => {
-                const data = doc.data();
-                newPrompts.push(data.text);
-            });
-            setPrompt(newPrompts[0]);
-            setPrompts(newPrompts);
-        })();
-    }, []);
+    // useEffect(() => {
+    //     (async function () {
+    //         const allPrompts = []
+    //         const response = await allPrompts.get();
+    //         const newPrompts = [];
+    //         response.docs.forEach((doc) => {
+    //             const data = doc.data();
+    //             newPrompts.push(data.text);
+    //         });
+    //         setPrompt(newPrompts[0]);
+    //         setPrompts(newPrompts);
+    //     })();
+    // }, []);
 
     const handleName = (event) => {
+        console.log('Handling name');
         setName(event.target.value);
     };
 
@@ -42,9 +45,31 @@ function StorySubmit({ latLong }) {
         setStoryText(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        setSubmitted(true);
+        console.log('Handling submit');
+        // Send the data to db
+        try {
+            const request = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, prompt, storyText })
+            }
+            const response = await fetch('api/SubmitStory', request);
+
+            if (response.ok) {
+                // Data is sent to db, log something for now
+                console.log('Data transferred to db\n');
+                setSubmitted(true);
+            }
+            else {
+                const resp_err = await response.json();
+                setError(resp_err.error);
+            }
+        }
+        catch (error) {
+            setError('Failed to submit data');
+        }
     };
 
     return (
@@ -74,13 +99,21 @@ function StorySubmit({ latLong }) {
                             required
                         />
                         <label className={styles.label} htmlFor="prompt">Choose a prompt:</label>
-                        <select className={styles.input} id="prompt" value={prompt} onChange={handlePrompt}>
-                            {prompts.map((text, index) => (
-                                <option key={index} value={text}>
-                                    {text}
-                                </option>
-                            ))}
-                        </select>
+                        {/*<select className={styles.input} id="prompt" value={prompt} onChange={handlePrompt}>*/}
+                        {/*    {prompts.map((text, index) => (*/}
+                        {/*        <option key={index} value={text}>*/}
+                        {/*            {text}*/}
+                        {/*        </option>*/}
+                        {/*    ))}*/}
+                        {/*</select>*/}
+                        {/*Cannot use useEffect for now so just hardcode some stuff*/}
+                        <input
+                            className={styles.input}
+                            id="prompt"
+                            onChange={handlePrompt}
+                            value={prompt}
+                            required
+                        />
                         <label className={styles.label} htmlFor="story">Your Story</label>
                         <textarea
                             className={styles.input}
@@ -98,6 +131,9 @@ function StorySubmit({ latLong }) {
                         >
                             Submit
                         </button>
+                        {/*<Button onClick={handleSubmit}>*/}
+                        {/*    Submit*/}
+                        {/*</Button>*/}
                     </form>
                 </>
             )}

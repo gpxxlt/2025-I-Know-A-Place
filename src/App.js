@@ -4,25 +4,27 @@ import AdminConsolePage from "./pages/AdminConsole";
 import LoginPage from './pages/Login';
 import AboutPage from './pages/About';
 import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer'
+import Footer from './components/Footer/Footer';
+import SearchPage from "./components/Search/SearchPage";
 
 import { useState } from 'react';
 
 function App() {
 
-    const [about, setAbout] = useState(false); 
+    const [about, setAbout] = useState(false);
 
     return (
             <div className="App">
-                <Header setAbout={setAbout}/>
-                {about?(
-                    <AboutPage/>
-                ):(
-                    <div className="content">
-                        <HomePage setAbout={setAbout}/>
-                        <Footer />
-                    </div>
-                )}
+                {/*<Header setAbout={setAbout}/>*/}
+                {/*{about?(*/}
+                {/*    <AboutPage/>*/}
+                {/*):(*/}
+                {/*    <div className="content">*/}
+                {/*        <HomePage setAbout={setAbout}/>*/}
+                {/*        <Footer />*/}
+                {/*    </div>*/}
+                {/*)}*/}
+                <SearchPage />
             </div>
     );
 

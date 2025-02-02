@@ -4,8 +4,8 @@ import { Button } from "@material-ui/core";
 function SearchButton() {
     const history = useHistory();
 
-    function handleClick() {
-        history.push("/SearchPage");
+    const handleClick = ()=> {
+        history.push("/search");
     }
 
     return (
