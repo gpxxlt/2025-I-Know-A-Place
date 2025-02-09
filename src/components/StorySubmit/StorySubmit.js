@@ -1,5 +1,4 @@
-// import { useState, useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import cn from 'classnames';
 
 import styles from './StorySubmit.module.css';
@@ -9,24 +8,24 @@ function StorySubmit({ latLong }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [prompt, setPrompt] = useState('');
-    // const [prompts, setPrompts] = useState([]);
+    const [prompts, setPrompts] = useState([]);
     const [storyText, setStoryText] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(null);
 
-    // useEffect(() => {
-    //     (async function () {
-    //         const allPrompts = []
-    //         const response = await allPrompts.get();
-    //         const newPrompts = [];
-    //         response.docs.forEach((doc) => {
-    //             const data = doc.data();
-    //             newPrompts.push(data.text);
-    //         });
-    //         setPrompt(newPrompts[0]);
-    //         setPrompts(newPrompts);
-    //     })();
-    // }, []);
+    useEffect(() => {
+        (async function () {
+            const allPrompts = []
+            // const response = await allPrompts.get();
+            // const newPrompts = [];
+            // response.docs.forEach((doc) => {
+            //     const data = doc.data();
+            //     newPrompts.push(data.text);
+            // });
+            // setPrompt(newPrompts[0]);
+            // setPrompts(newPrompts);
+        })();
+    }, []);
 
     const handleName = (event) => {
         console.log('Handling name');
@@ -48,27 +47,31 @@ function StorySubmit({ latLong }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log('Handling submit');
-        // Send the data to db
         try {
+            // TODO: Update the things to send
+            // body: JSON.stringify({ name, email, prompt, storyText })
             const request = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, prompt, storyText })
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    storyText: storyText,
+                    prompt: prompt,
+                    longitude: parseFloat(latLong.lng.toFixed(4)),
+                    latitude: parseFloat(latLong.lat.toFixed(4))
+                }),
             }
-            const response = await fetch('api/SubmitStory', request);
-
+            const response = await fetch('http://localhost:8080/api/Stories', request);
+            console.log('Client gets response');
             if (response.ok) {
-                // Data is sent to db, log something for now
-                console.log('Data transferred to db\n');
+                console.log(response.body);
                 setSubmitted(true);
-            }
-            else {
-                const resp_err = await response.json();
-                setError(resp_err.error);
             }
         }
         catch (error) {
             setError('Failed to submit data');
+            console.log(error);
         }
     };
 
@@ -99,21 +102,21 @@ function StorySubmit({ latLong }) {
                             required
                         />
                         <label className={styles.label} htmlFor="prompt">Choose a prompt:</label>
-                        {/*<select className={styles.input} id="prompt" value={prompt} onChange={handlePrompt}>*/}
-                        {/*    {prompts.map((text, index) => (*/}
-                        {/*        <option key={index} value={text}>*/}
-                        {/*            {text}*/}
-                        {/*        </option>*/}
-                        {/*    ))}*/}
-                        {/*</select>*/}
+                        <select className={styles.input} id="prompt" value={prompt} onChange={handlePrompt}>
+                            {prompts.map((text, index) => (
+                                <option key={index} value={text}>
+                                    {text}
+                                </option>
+                            ))}
+                        </select>
                         {/*Cannot use useEffect for now so just hardcode some stuff*/}
-                        <input
-                            className={styles.input}
-                            id="prompt"
-                            onChange={handlePrompt}
-                            value={prompt}
-                            required
-                        />
+                        {/*<input*/}
+                        {/*    className={styles.input}*/}
+                        {/*    id="prompt"*/}
+                        {/*    onChange={handlePrompt}*/}
+                        {/*    value={prompt}*/}
+                        {/*    required*/}
+                        {/*/>*/}
                         <label className={styles.label} htmlFor="story">Your Story</label>
                         <textarea
                             className={styles.input}

@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Button, Input} from "@material-ui/core";
 
-function SearchPage() {
+function Dashboard() {
 
     // Setting up hooks for fetching data
     const [filteredData, setFilteredData] = useState([]);
@@ -21,7 +21,7 @@ function SearchPage() {
             const response = await fetch(`/api/GetFilterStory?keywords=${encodeURIComponent(input)}`);
 
             if (response.ok) {
-                console.log('Database sends back filtered response\n');
+                console.log(response.body);
             }
 
             const data = await response.json();
@@ -70,4 +70,4 @@ function SearchPage() {
     )
 }
 
-export default SearchPage;
+export default Dashboard;
